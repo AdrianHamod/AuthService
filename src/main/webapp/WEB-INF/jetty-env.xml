@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "https://www.eclipse.org/jetty/configure_10_0.dtd">
+<Configure id="wac" class="org.eclipse.jetty.webapp.WebAppContext">
+    <New id="ds" class="org.eclipse.jetty.plus.jndi.Resource">
+        <Arg><Ref refid="wac"/></Arg>
+        <Arg>jdbc/postgresqldb</Arg>
+        <Arg>
+            <New class="org.postgresql.ds.PGSimpleDataSource">
+                <Set name="User">postgres</Set>
+                <Set name="Password">postgres</Set>
+                <Set name="DatabaseName">Postgres</Set>
+                <Set name="ServerName">localhost</Set>
+                <Set name="PortNumber">5432</Set>
+            </New>
+        </Arg>
+        <Call name="bindToENC">
+            <Arg>jdbc/postgresqldb</Arg>
+        </Call>
+    </New>
+</Configure>
